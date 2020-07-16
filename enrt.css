@@ -40,10 +40,63 @@
 
 TD {
     font-family: 'RostelecomBasis-Regular', sans-serif;
+    font-size: 14px;
 }
 
 .ge_white_on_black {
     font-family: 'RostelecomBasis-Regular', sans-serif;
+    font-size: 14px;
+}
+.h5 {
+    font-size: 14px;
+}
+.h8 {
+    font-size: 14px;
+}
+.h9 {
+    font-size: 14px;
+}
+.h10 {
+    font-size: 14px;
+}
+.h11 {
+    font-size: 14px;
+}
+.h12 {
+    font-size: 14px;
+}
+.h13 {
+    font-size: 14px;
+}
+.h14 {
+    font-size: 14px;
+}
+.h15 {
+    font-size: 15px;
+}
+.h16 {
+    font-size: 16px;
+}
+.h17 {
+    font-size: 17px;
+}
+.h18 {
+    font-size: 18px;
+}
+.h19 {
+    font-size: 19px;
+}
+.h20 {
+    font-size: 20px;
+}
+.h23 {
+    font-size: 23px;
+}
+.h24 {
+    font-size: 24px;
+}
+.h40 {
+    font-size: 40px;
 }
 
 .input {
