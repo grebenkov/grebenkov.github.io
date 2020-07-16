@@ -1,4 +1,4 @@
-﻿@font-face {
+@font-face {
     font-family: "RostelecomBasis-Light";
     src: 
          url("https://grebenkov.github.io/rt-basis.otf") format("opentype");
@@ -272,7 +272,7 @@ TR.toWinnerAltItem {
 .menu li li.sfHover,
 .menu .game,
 .menuWrap td {
- background-image:none;
+ background-image:none!important;
  background-color:#65bbdf;
 }
 .menu .subArrow,
@@ -282,11 +282,15 @@ TR.toWinnerAltItem {
 .menu li li li,
 .menu li,
 .menu .default span {
- background-image:none;
+ background-image:none!important;
  background-color:#65bbdf;
 }
 .menu .root,
 .menu a:visited.root {
  color:#f1f3f5!important;
  text-decoration:none!important;
+}
+td#tdEn016 {
+ background-color: #FFFFFF !important;
+ background:#FFFFFF !important;
 }
