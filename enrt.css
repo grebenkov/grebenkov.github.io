@@ -214,6 +214,12 @@ A.lm:hover {
 TR.topWinnerHead {
  background-color:#273a64;
 }
+TR.toWinnerItem {
+ background-color:#FFFFFF;
+}
+TR.toWinnerAltItem {
+ background-color:#FFFFFF;
+}
 .leftMenu {
  background-color:#f1f3f5;
 }
