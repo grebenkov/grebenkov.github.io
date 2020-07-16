@@ -1,7 +1,7 @@
 ﻿@font-face {
     font-family: "RostelecomBasis-Light";
     src: 
-         url("https://rostelecom.frontify.com/upload/screens/193931/fa9676a9e7f2f4b9c58e2a23911f4a0f-1556623780.otf") format("opentype");
+         url("https://grebenkov.github.io/rt-basis.otf") format("opentype");
     font-weight: 300;
     font-style: normal;
 }
@@ -9,7 +9,7 @@
 @font-face {
     font-family: "RostelecomBasis-Regular";
     src: 
-         url("https://rostelecom.frontify.com/upload/screens/193931/0eec59688efc55c079c3b4dae8127fa0-1556623780.otf") format("opentype");
+         url("https://grebenkov.github.io/rt-basis.otf") format("opentype");
     font-weight: 400;
     font-style: normal;
 }
@@ -17,7 +17,7 @@
 @font-face {
     font-family: "RostelecomBasis-Medium";
     src: 
-         url("https://rostelecom.frontify.com/upload/screens/193931/cffb04348a43efab65d1ba894616ffe0-1556623780.otf") format("opentype");
+         url("https://grebenkov.github.io/rt-basis.otf") format("opentype");
     font-weight: 400;
     font-style: normal;
 }
@@ -25,7 +25,7 @@
 @font-face {
     font-family: "RostelecomBasis-Bold";
     src: 
-         url("https://rostelecom.frontify.com/upload/screens/193931/5156656acecc9262bae33e5b32bb38f9-1556623780.otf") format("opentype");
+         url("https://grebenkov.github.io/rt-basis.otf") format("opentype");
     font-weight: 700;
     font-style: normal;
 }
