@@ -249,6 +249,7 @@ TR.topWinnerHead {
 }
 .hr {
  height:2px;
+ background-image: none;
  background-color: #7700ff;
 }
 .bg_light2 {
@@ -266,7 +267,7 @@ TR.topWinnerHead {
 .menu .game,
 .menuWrap td {
  background-image:none;
- background-color:#273a64;
+ background-color:#65bbdf;
 }
 .menu .subArrow,
 .menu .rSubArrow,
@@ -276,7 +277,7 @@ TR.topWinnerHead {
 .menu li,
 .menu .default span {
  background-image:none;
- background-color:#273a64;
+ background-color:#65bbdf;
 }
 .menu .root,
 .menu a:visited.root {
