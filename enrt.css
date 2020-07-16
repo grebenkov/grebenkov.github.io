@@ -1,0 +1,118 @@
+﻿@font-face {
+    font-family: "RostelecomBasis-Light";
+    src: 
+         url("https://rostelecom.frontify.com/upload/screens/193931/fa9676a9e7f2f4b9c58e2a23911f4a0f-1556623780.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "RostelecomBasis-Regular";
+    src: 
+         url("https://rostelecom.frontify.com/upload/screens/193931/0eec59688efc55c079c3b4dae8127fa0-1556623780.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "RostelecomBasis-Medium";
+    src: 
+         url("https://rostelecom.frontify.com/upload/screens/193931/cffb04348a43efab65d1ba894616ffe0-1556623780.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "RostelecomBasis-Bold";
+    src: 
+         url("https://rostelecom.frontify.com/upload/screens/193931/5156656acecc9262bae33e5b32bb38f9-1556623780.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+}
+#side-right * {
+  font-family: 'RostelecomBasis-Regular', sans-serif!important;
+}
+
+{
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+
+TD {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+
+.ge_white_on_black {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+
+.input {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+
+.input_border {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+.input_width_not_fixed {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+.textbox {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+.textbox.big {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+.textarea {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+.textarea_blank {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+.txt_rich_editor {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+#boxUser a.gold19 {
+  font-family: 'RostelecomBasis-Regular', sans-serif!important;
+}
+.ui-widget button {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+.ui-widget {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+#tblUserBox .lma {
+    font-family: 'RostelecomBasis-Regular', sans-serif!important;
+}
+#tblUserBox .lma {
+    color: #f78604!important;
+}
+#tblUserBox a.h9 {
+  font-family: 'RostelecomBasis-Regular', sans-serif!important;
+}
+.tabNav {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+.tabNav li.more a {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+.tabNav_bottom {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+.tabText {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+.tabCal {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+.tabCal li.more a {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+}
+.menu,
+.menu *,
+.menu li,
+.menu li a,
+.menu li li a {
+    font-family: 'RostelecomBasis-Regular', sans-serif!important;
+}
+.calendar h1 {
+    font-family: 'RostelecomBasis-Regular', sans-serif!important;
+}
