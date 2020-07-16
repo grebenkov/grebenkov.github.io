@@ -170,3 +170,116 @@ TD {
 .calendar h1 {
     font-family: 'RostelecomBasis-Regular', sans-serif!important;
 }
+BODY {
+  color:#70747e;
+  background-color:White;
+}
+.white {
+ color:#101828;
+}
+.green {
+ color:#101828;
+}
+.orange {
+ color:#70747e;
+}
+.gold {
+ color:#70747e;
+}
+A {
+ COLOR:#101828;
+}
+A:hover {
+ COLOR:black;
+}
+A.lm {
+ COLOR:#f1f3f5;
+}
+A.lm:hover {
+ COLOR:white; 
+}
+.PageTitle {
+ color:#101828;
+}
+.white24 {
+ color:#f1f3f5;
+ background-color: #7700ff;  
+ font-size:24px;
+ padding:5px;
+}
+.bg_main,
+.center-column {
+ background-color:#f1f3f5; 
+}
+TR.topWinnerHead {
+ background-color:#273a64;
+}
+.leftMenu {
+ background-color:#f1f3f5;
+}
+.enPnl1.pnGr {
+ border-color:#ff4f12!important;
+ background-color:#ff4f12!important;
+}
+.enPnl1.pnOl {
+ border-color:#ff4f12!important;
+ background-color:#ff4f12!important;
+}
+.enPnl1.clr0 {
+ border-color:#ff4f12!important;
+ background-color:#ff4f12!important;
+} 
+.h9 {
+ color:#f1f3f5;
+}
+.yellow_lihgt {
+ color:#FFF;
+}
+#tblUserBox {
+ color:#f1f3f5;  
+}
+#boxNews {
+    visibility: hidden;
+}
+#boxOnlineHelp {
+    visibility: hidden;
+}
+#lnkAdPlacement {
+    visibility: hidden;
+}
+.hr {
+ height:2px;
+ background-color: #7700ff;
+}
+.bg_light2 {
+ background-color:#273a64;
+}
+.bottom_hr {
+ background-color:#7700ff;
+ height:3px;
+}
+.yellow_darkgreen {
+ color:#101828;
+}
+.menu li li:hover,
+.menu li li.sfHover,
+.menu .game,
+.menuWrap td {
+ background-image:none;
+ background-color:#273a64;
+}
+.menu .subArrow,
+.menu .rSubArrow,
+.menu li a,
+.menu li li,
+.menu li li li,
+.menu li,
+.menu .default span {
+ background-image:none;
+ background-color:#273a64;
+}
+.menu .root,
+.menu a:visited.root {
+ color:#f1f3f5!important;
+ text-decoration:none!important;
+}
