@@ -177,8 +177,23 @@ BODY {
 .white {
  color:#101828;
 }
+.white_bold {
+ color:#101828;
+ font-weight:bold;
+}
 .green {
  color:#101828;
+}
+.green_gold {
+ color:#101828;
+}
+.white19 {
+ color:#101828;
+ font-size:24px;
+}
+.gold19 {
+ color:#101828;
+ font-size:24px;
 }
 .orange {
  color:#70747e;
@@ -211,6 +226,12 @@ A.lm:hover {
  color:#f1f3f5;
  background-color: #7700ff;  
  font-size:24px;
+ padding:5px;
+}
+.white_bold14 {
+ color:#f1f3f5;
+ background-color: #7700ff;  
+ font-size:18px;
  padding:5px;
 }
 .bg_main,
