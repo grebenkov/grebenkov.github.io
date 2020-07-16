@@ -294,3 +294,8 @@ td#tdEn016 {
  background-color: #FFFFFF !important;
  background:#FFFFFF !important;
 }
+.menu .default {
+ display:none;
+ float:left;
+ width:30px!important;
+}
