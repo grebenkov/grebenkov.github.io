@@ -192,6 +192,12 @@ A {
 A:hover {
  COLOR:black;
 }
+A.yellow_darkgreen {
+ COLOR:#f1f3f5;
+}
+A.green {
+ COLOR:#f1f3f5;
+}
 A.lm {
  COLOR:#f1f3f5;
 }
@@ -235,6 +241,21 @@ TR.toWinnerAltItem {
  border-color:#ff4f12!important;
  background-color:#ff4f12!important;
 } 
+.enPnl1.pnGr2 {
+ border-color:#f1f3f5!important;
+ background-color:#f1f3f5!important;
+}
+.tabCntHolder_alt {
+ border-bottom:1px solid #f1f3f5;
+ border-left:1px solid #f1f3f5;
+ border-right:1px solid #f1f3f5;
+ padding:0;
+ margin:0;
+ background-color:#f1f3f5;
+}
+.panel_line_bgcolor {
+ background-color:#ff4f12;
+}
 .h9 {
  color:#f1f3f5;
 }
