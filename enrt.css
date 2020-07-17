@@ -35,41 +35,41 @@
 
 {
     font-family: 'RostelecomBasis-Regular', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 TD {
     font-family: 'RostelecomBasis-Regular', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .ge_white_on_black {
     font-family: 'RostelecomBasis-Regular', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
 }
 .h5 {
-    font-size: 14px;
+    font-size: 16px;
 }
 .h8 {
-    font-size: 14px;
+    font-size: 16px;
 }
 .h9 {
-    font-size: 14px;
+    font-size: 16px;
 }
 .h10 {
-    font-size: 14px;
+    font-size: 16px;
 }
 .h11 {
-    font-size: 14px;
+    font-size: 16px;
 }
 .h12 {
-    font-size: 14px;
+    font-size: 16px;
 }
 .h13 {
-    font-size: 14px;
+    font-size: 16px;
 }
 .h14 {
-    font-size: 14px;
+    font-size: 16px;
 }
 .h15 {
     font-size: 15px;
@@ -315,7 +315,7 @@ TR.toWinnerAltItem {
 .menu .game,
 .menuWrap td {
  background-image:none!important;
- background-color:#65bbdf;
+ background-color:#273a64;
 }
 .menu .subArrow,
 .menu .rSubArrow,
@@ -325,7 +325,7 @@ TR.toWinnerAltItem {
 .menu li,
 .menu .default span {
  background-image:none!important;
- background-color:#65bbdf;
+ background-color:#273a64;
 }
 .menu .root,
 .menu a:visited.root {
@@ -340,4 +340,19 @@ td#tdEn016 {
  display:none;
  float:left;
  width:30px!important;
+}
+.menu a.sf-with-ul {
+    color:#f1f3f5;
+}
+.menu a.bold {
+    color:#f1f3f5;
+    text-decoration:none!important;
+}
+.menu a {
+    color:#f1f3f5;
+    text-decoration:none!important;
+}
+#enhlMobileVersionLink {
+    color:#f1f3f5;
+    text-decoration:none!important;
 }
