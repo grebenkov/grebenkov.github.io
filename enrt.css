@@ -1,7 +1,7 @@
 @font-face {
     font-family: "RostelecomBasis-Light";
     src: 
-         url("https://grebenkov.github.io/rt-basis.otf") format("opentype");
+         url("https://grebenkov.github.io/rt-basis-light.otf") format("opentype");
     font-weight: 300;
     font-style: normal;
 }
@@ -17,7 +17,7 @@
 @font-face {
     font-family: "RostelecomBasis-Medium";
     src: 
-         url("https://grebenkov.github.io/rt-basis.otf") format("opentype");
+         url("https://grebenkov.github.io/rt-basis-bold.otf") format("opentype");
     font-weight: 400;
     font-style: normal;
 }
@@ -25,7 +25,7 @@
 @font-face {
     font-family: "RostelecomBasis-Bold";
     src: 
-         url("https://grebenkov.github.io/rt-basis.otf") format("opentype");
+         url("https://grebenkov.github.io/rt-basis-med.otf") format("opentype");
     font-weight: 700;
     font-style: normal;
 }
