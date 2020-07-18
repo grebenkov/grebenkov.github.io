@@ -137,7 +137,7 @@ TD {
     font-family: 'RostelecomBasis-Regular', sans-serif;
 }
 #tblUserBox .lma {
-    font-family: 'RostelecomBasis-Regular', sans-serif!important;
+    font-family: 'RostelecomBasis-Medium', sans-serif!important;
 }
 #tblUserBox .lma {
     color: #f78604!important;
@@ -218,15 +218,18 @@ A.green {
 }
 A.lm {
  COLOR:#f1f3f5;
+ font-family: "RostelecomBasis-Medium";
 }
 A.lm:hover {
  COLOR:white; 
 }
 .PageTitle {
+ font-family: "RostelecomBasis-Medium";
  color:#101828;
 }
 .white24 {
  color:#f1f3f5;
+ font-family: "RostelecomBasis-Medium";
  background-color: #7700ff;  
  font-size:24px;
  padding:5px;
