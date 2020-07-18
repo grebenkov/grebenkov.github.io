@@ -472,3 +472,15 @@ td span.yellow_lihgt.h24 {
   COLOR: #101828;
   background-color: #FFFFFF;
 }
+.crumbItem {
+ color:#101828;
+ font-size:16px;
+}
+.crumbLastItem {
+ color:#101828;
+ font-size:16px;
+}
+.crumbSeparator {
+ color:#101828;
+ font-size:16px;
+}
