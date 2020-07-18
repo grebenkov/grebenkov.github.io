@@ -101,8 +101,11 @@ TD {
 
 .input {
     font-family: 'RostelecomBasis-Regular', sans-serif;
+    background-color: #FFFFFF;
+    color: #101828;
+    height: 18px;
+    font-size: 14px;
 }
-
 .input_border {
     font-family: 'RostelecomBasis-Regular', sans-serif;
 }
@@ -355,4 +358,86 @@ td#tdEn016 {
 #enhlMobileVersionLink {
     color:#f1f3f5;
     text-decoration:none!important;
+}
+.mailRead {
+ background-color:#f1f3f5;
+}
+.mailUnRead {
+ background-color:#FFFFFF;
+}
+.mailDeleted {
+ background-color:#e3e8ec;
+}
+.msgDateTime {
+ color:#101828;   
+}
+a.green {
+ color:#101828;
+}
+.enMailTab td {
+ background:none;
+}
+.enMailTab td div {
+ background:none;
+}
+.enMailTab td a {
+ background:none;
+}
+.enMailTab .td_last {
+ background:none;
+}
+.enMailTab .td_free a {
+ background:none;
+}
+.enMailTab .current {
+ background:none;
+}
+.enMailTab .current div {
+ background-image:none;
+}
+.enMailTab .current a {
+ background:none;
+ color:#000;
+}
+.enMailTab .current span {
+ color:#000;
+}
+.enMailTab .current .count {
+ color:#000!important;
+}
+.enMailTab .current .count a:hover span {
+ color:#000!important;
+}
+.enMailTab .current a:hover span {
+ color:#000000;
+}
+.enMailTab .td_free {
+ margin:0;
+ background:none;
+}
+.enMailTab .count {
+ color:#101828!important;
+}
+.enMailTab .td_free a {
+ text-decoration:none;
+ color:#101828;
+}
+.enMailTab td a span {
+ text-decoration:none;
+}
+.enMailTab td a:hover span {
+ text-decoration:underline;
+ color:#101828;
+}
+.tab .red_orange {
+ color:#979799 
+}
+#tblUserBox .lma {
+    color: #7700ff!important;
+}
+#tblMailSelect td.yellow_lihgt {
+  color:#101828;
+}
+.mailDialogInfo {
+  color:#70747e;    
 }
