@@ -224,8 +224,11 @@ A.lm:hover {
  COLOR:white; 
 }
 .PageTitle {
+ color:#f1f3f5;
  font-family: "RostelecomBasis-Medium";
- color:#101828;
+ background-color: #7700ff;  
+ font-size:24px;
+ padding:5px;
 }
 .white24 {
  color:#f1f3f5;
