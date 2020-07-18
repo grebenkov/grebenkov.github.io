@@ -253,6 +253,10 @@ TR.toWinnerAltItem {
 .leftMenu {
  background-color:#f1f3f5;
 }
+.enPnl1 {
+ border-color:#7700ff;
+ background-color:#FFFFFF;
+}
 .enPnl1.pnGr {
  border-color:#ff4f12!important;
  background-color:#ff4f12!important;
@@ -440,4 +444,15 @@ a.green {
 }
 .mailDialogInfo {
   color:#70747e;    
+}
+A.dashed,
+A.dashed:link,
+A.dashed:visited {
+ border-color:#7700ff;
+}
+.txt_rich_editor {
+  font-family: "RostelecomBasis-Regular", sans-serif;
+  font-size: 14px;
+  COLOR: #101828;
+  background-color: #FFFFFF;
 }
