@@ -529,3 +529,23 @@ TD.left5p19h a,span.gold19,span.white19 {
 .Text4yellow,.Text4gold {
     color:#101828;
 }
+span.padL3.aqua {
+    color: #ff4f12;
+    font-family: "RostelecomBasis-Medium";
+}
+#lblPhotoGalleries {
+ color:#f1f3f5;
+ font-family: "RostelecomBasis-Medium";
+ background-color: #7700ff;  
+ font-size:24px;
+ padding:5px; 
+}
+#GameDetail_GameHeader_lblGameTypeName {
+   font-family: "RostelecomBasis-Medium", sans-serif; 
+}
+.darkgraybg, .bg_dark {
+   background-color: white!important; 
+}
+div[style*="background-image:url(http://cdn.endata.cx/images/separator_bg.gif)"] {
+    background-image: none!important;
+}
