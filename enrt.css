@@ -456,3 +456,19 @@ A.dashed:visited {
   COLOR: #101828;
   background-color: #FFFFFF;
 }
+.menuWrap td {
+ border-top:1px solid #273a64;
+ border-bottom:1px solid #273a64;
+}
+.cream {
+ color: #70747e;
+}
+td span.yellow_lihgt.h24 {
+ color: #101828;
+}
+.textbox {
+  font-family: "RostelecomBasis-Regular", sans-serif;
+  font-size: 14px;
+  COLOR: #101828;
+  background-color: #FFFFFF;
+}
