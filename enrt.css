@@ -549,3 +549,6 @@ span.padL3.aqua {
 div[style*="background-image:url(http://cdn.endata.cx/images/separator_bg.gif)"] {
     background-image: none!important;
 }
+#lnkGbTopic {
+    color:white;
+}
