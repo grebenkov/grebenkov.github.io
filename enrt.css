@@ -490,3 +490,42 @@ td span.yellow_lihgt.h24 {
  color:#101828;
  font-size:16px;
 }
+div#boxCenterComingGames br:nth-child(1) {
+    display:none;
+}
+div#boxCenterComingGames br:nth-child(2) {
+    display:none;
+}
+div#boxCenterComingGames span.white:nth-child(3) {
+  display: none;
+}
+div#boxCenterComingGames span.yellow_green11:nth-child(4) {
+  display: none;
+}
+div#boxCenterComingGames span.white:nth-child(5) {
+  display: none;
+}
+#ComingGamesRepeater_ctl00_gameInfo_enContPanel_gameHeader_lblGameTypeName {
+  font-family: "RostelecomBasis-Medium", sans-serif;
+}
+#lnkGameTitle {
+  font-family: "RostelecomBasis-Medium", sans-serif;
+  text-decoration: none;
+}
+TD.left5p19h {
+    color:white;
+}
+TD.left5p19h a,span.gold19,span.white19 {
+    color:white;
+}
+#lnkMakeGameFee {
+   color:#101828;
+   font-size:16px;
+}
+.enPnl1.clr1 {
+    background-color: white!important;
+    border-color: #7700ff!important;
+}
+.Text4yellow,.Text4gold {
+    color:#101828;
+}
