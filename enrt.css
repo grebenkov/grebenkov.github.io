@@ -598,6 +598,12 @@ tr[id^="ctl01_UserQIRepeater"] {
 a.yellow_darkgreen[id^="ctl02_GamesByZoneRepeater"] {
   color: #101828;
 }
+a.yellow_darkgreen[id^="ctl01_UserRefereeingRepeater"] {
+  color: #101828;
+}
+a.yellow_darkgreen[id^="ctl01_GamePersonalHolder"] {
+  color: #101828;
+}
 .gold_bold {
   color: #101828;
 }
@@ -656,5 +662,8 @@ tr[id^="ctl01_UserQIRepeater"] {
     background-color: #FFFFFF!important;
 }
 tbody[id^="ctl01_UserQIRepeater"] tr {
+    background-color: #FFFFFF!important;
+}
+tr[id^="ctl01_UserRefereeingRepeater"] {
     background-color: #FFFFFF!important;
 }
