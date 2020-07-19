@@ -581,6 +581,7 @@ div.hr[style*="background-color:#00FF00;"] {
 }
 TD.back_forum {
     background-image: none!important;
+    color:white;
 }
 TR.forumRow {
     background-color: #F1F3F5;
@@ -589,6 +590,9 @@ TR.forumRow {
     background-color: #FFFFFF!important;
 }
 tr[id^="ctl02_GamesByZoneRepeater"] {
+    background-color: #FFFFFF!important;
+}
+tr[id^="ctl01_UserQIRepeater"] {
     background-color: #FFFFFF!important;
 }
 a.yellow_darkgreen[id^="ctl02_GamesByZoneRepeater"] {
@@ -644,4 +648,13 @@ a.yellow_darkgreen[id^="ctl02_GamesByZoneRepeater"] {
 .tblList .current a {
  background-image:none;
  color:#101828;
+}
+.aqua {
+  color:#101828;
+}
+tr[id^="ctl01_UserQIRepeater"] {
+    background-color: #FFFFFF!important;
+}
+tbody[id^="ctl01_UserQIRepeater"] tr {
+    background-color: #FFFFFF!important;
 }
