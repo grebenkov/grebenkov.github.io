@@ -579,3 +579,69 @@ div.hr[style*="background-color:#00FF00;"] {
 #lnkGbTopic {
     color:white;
 }
+TD.back_forum {
+    background-image: none!important;
+}
+TR.forumRow {
+    background-color: #F1F3F5;
+}
+#ctl02_trPagingTop,#ctl02_trPagingBottom {
+    background-color: #FFFFFF!important;
+}
+tr[id^="ctl02_GamesByZoneRepeater"] {
+    background-color: #FFFFFF!important;
+}
+a.yellow_darkgreen[id^="ctl02_GamesByZoneRepeater"] {
+  color: #101828;
+}
+.gold_bold {
+  color: #101828;
+}
+.tblList td.tab {
+    background: none;
+}
+.tabNav {
+ background:none;
+}
+.tabNav li div {
+ background:none;
+}
+.tabNav a {
+ background:none;
+}
+.tabNav .current div {
+ background-image:none;
+}
+.tabNav .current a {
+ background-image:none;
+}
+.tabNav_bottom {
+ background:none;
+}
+.tblList td div.tab {
+ background:none;
+}
+.tblList td a {
+ background:none;
+ color: #70747e;
+}
+.tblList td a:hover {
+ color:#101828;
+ text-decoration:underline;
+}
+.tblList .td_last {
+ background:none!important;
+}
+.tblList .td_last div.tab {
+ background:none;
+}
+.tblList .current {
+ background:none;
+}
+.tblList .current div.tab {
+ background:none;
+}
+.tblList .current a {
+ background-image:none;
+ color:#101828;
+}
