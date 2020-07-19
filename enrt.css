@@ -534,7 +534,10 @@ TD.left5p19h a,span.gold19,span.white19 {
     background-color: white!important;
     border-color: #7700ff!important;
 }
-.Text4yellow,.Text4gold {
+.Text4yellow,.Text4gold, {
+    color:#101828;
+}
+table.padB10.padL10.padR10 tbody tr td span.yellow_lihgt.bold {
     color:#101828;
 }
 span.padL3.aqua {
