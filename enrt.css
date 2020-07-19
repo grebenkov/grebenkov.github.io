@@ -667,3 +667,9 @@ tbody[id^="ctl01_UserQIRepeater"] tr {
 tr[id^="ctl01_UserRefereeingRepeater"] {
     background-color: #FFFFFF!important;
 }
+tr.bg_very_dark {
+    background-color: #FFFFFF;
+}
+.tblGBSection {
+ background-color:#273a64;
+}
