@@ -530,6 +530,10 @@ TD.left5p19h a,span.gold19,span.white19 {
     background-color: white!important;
     border-color: #7700ff!important;
 }
+.enPnl1.clr4 {
+    background-color: white!important;
+    border-color: #7700ff!important;
+}
 .Text4yellow,.Text4gold {
     color:#101828;
 }
@@ -552,6 +556,15 @@ span.padL3.aqua {
 }
 div[style*="background-image:url(http://cdn.endata.cx/images/separator_bg.gif)"] {
     background-image: none!important;
+}
+div[style*="background-image:url('http://cdn.endata.cx/images/level_bg.gif');"] {
+    background-image: none!important;
+}
+div.hr[style*="background-color:#008000;"] {
+    background-color: #7700ff;
+}
+div.hr[style*="background-color:#00FF00;"] {
+    background-color: #7700ff;
 }
 #lnkGbTopic {
     color:white;
