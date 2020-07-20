@@ -477,6 +477,7 @@ td span.yellow_lihgt.h24 {
   font-size: 14px;
   COLOR: #101828;
   background-color: #FFFFFF;
+  border-color:#7700ff;
 }
 .crumbItem {
  color:#101828;
@@ -552,7 +553,7 @@ span.padL3.aqua {
     font-family: "RostelecomBasis-Medium";
 }
 #lblPhotoGalleries {
- color:#f1f3f5;
+ color:#f1f3f5!important;
  font-family: "RostelecomBasis-Medium";
  background-color: #7700ff;  
  font-size:24px;
@@ -678,4 +679,13 @@ tr.bg_very_dark {
 }
 a.fresh_white {
   color:#101828!important;
+}
+.white_bold13 {
+  color:#101828;
+}
+.Text4white {
+  color:#101828;
+}
+.yellow_green11 {
+ color:#70747e;
 }
