@@ -587,6 +587,9 @@ TD.back_forum {
 TR.forumRow {
     background-color: #F1F3F5;
 }
+TR.infoRow {
+    background-color: #F1F3F5;
+}
 #ctl02_trPagingTop,#ctl02_trPagingBottom {
     background-color: #FFFFFF!important;
 }
@@ -688,4 +691,21 @@ a.fresh_white {
 }
 .yellow_green11 {
  color:#70747e;
+}
+.yellow .h16 {
+ color:#70747e;
+}
+.yellow {
+ color:#70747e;
+}
+.tdTopicTitle {
+  background-image:none;
+  background: #7700ff;
+}
+td.tdTopicTitle span.yellow.h16 {
+ color:white;
+ font-family: "RostelecomBasis-Medium";
+}
+.light_yellow {
+    color:#70747e;
 }
