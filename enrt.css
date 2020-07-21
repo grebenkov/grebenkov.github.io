@@ -715,3 +715,14 @@ td.white14 {
 #lnkManager {
   color:#101828;
 }
+.quoteText {
+  COLOR: #70747e;
+  background-color: #f1f3f5;
+  border-color:#7700ff;
+}
+.quoteText a {
+  COLOR: #101828;
+}
+h4,h3,h2 {
+  COLOR: #101828;
+}
