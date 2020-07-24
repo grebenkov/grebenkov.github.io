@@ -36,3 +36,60 @@ body {
 	font-family: 'RostelecomBasis-Regular', sans-serif;
         font-size: 16px;
 }
+input {
+    font-family: 'RostelecomBasis-Regular', sans-serif;
+    background-color: #FFFFFF!important;;
+    color: #101828!important;;
+    height: 24px;
+    font-size: 16px;
+}
+#lblGameTitle {
+ color:#f1f3f5;
+ font-family: "RostelecomBasis-Medium";
+ background-color: #7700ff;  
+ font-size:24px;
+ padding:5px;
+}
+label {
+    color: #70747e;
+}
+h3 {
+ background-color:#ff4f12;
+ color:white!important;
+ padding:5px;
+}
+h2 {
+  color:white!important;
+  padding:5px;
+  font-size:20px!important;
+  font-family: "RostelecomBasis-Medium";
+  background-color: #7700ff;  
+}
+.header li a {
+	display:block;
+	height:52px;
+	color: #70747e!important; 
+	text-decoration:none;
+}
+.header li a:hover {
+	color:black!important;
+	cursor: pointer;
+}
+.header .refresh {
+	background:url(http://d1.endata.cx/data/games/69794/menu_inverse.png) 27px 0 no-repeat;
+}
+.header .stats {
+	background:url(http://d1.endata.cx/data/games/69794/menu_inverse.png) -58px 0 no-repeat;
+}
+.header .levelstats {
+	background:url(http://d1.endata.cx/data/games/69794/menu_inverse.png) -142px 0 no-repeat;
+}
+.header .discuss {
+	background:url(http://d1.endata.cx/data/games/69794/menu_inverse.png) -225px 0 no-repeat;
+}
+.header .mail {
+	background:url(http://d1.endata.cx/data/games/69794/menu_inverse.png) -310px 0 no-repeat;
+}
+.header .print {
+	background:url(http://d1.endata.cx/data/games/69794/menu_inverse.png) -393px 0 no-repeat;
+}
