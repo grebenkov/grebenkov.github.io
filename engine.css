@@ -93,3 +93,6 @@ h2 {
 .header .print {
 	background:url(http://d1.endata.cx/data/games/69794/menu_inverse.png) -393px 0 no-repeat;
 }
+h2 span {
+  background-color: #ff4f12!important;    
+}
