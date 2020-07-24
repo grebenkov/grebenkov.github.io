@@ -729,3 +729,9 @@ h4,h3,h2 {
 .topWinnerHead .white_bold13 {
   color:white;
 }
+font {
+  color:black!important;
+}
+#table3 font {
+  color:white!important;
+}
