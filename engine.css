@@ -121,3 +121,10 @@ h3.timer {
 .color_correct {
     color: #7700ff!important;
 }
+.content a {
+	color:#70747e!important;
+	cursor: pointer;    
+}
+.content a:hover {
+	color:black!important; 
+}
