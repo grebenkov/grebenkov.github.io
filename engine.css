@@ -57,6 +57,7 @@ h3 {
  background-color:#ff4f12;
  color:white!important;
  padding:5px;
+ line-height:30px;
 }
 h2 {
   color:white!important;
@@ -99,4 +100,24 @@ h2 span {
 h3.timer {
     background: #f1f3f5;
     color: #101828!important;
+}
+.correct {
+    color:#70747e!important;
+}
+.correct a {
+	color:#70747e!important;
+	cursor: pointer;
+}
+.correct a:hover {
+	color:black!important; 
+}
+.history a {
+	color:#70747e!important;
+	cursor: pointer;
+}
+.history a:hover {
+	color:black!important; 
+}
+.color_correct {
+    color: #7700ff!important;
 }
