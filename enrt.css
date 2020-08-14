@@ -753,3 +753,18 @@ font {
 #table2 a {
   color:white!important;
 }
+td#TdPenaltyLink a {
+   COLOR: #70747e;  
+}
+.winnerPoint {
+   COLOR: black;  
+}
+td.topWinners.pink {
+  color: #ff4f12;
+}
+td.topWinners.yellow_lihgt {
+   COLOR: #70747e;  
+}
+TR.topWinnerHead {
+    background-color: white;
+}
