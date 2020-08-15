@@ -768,3 +768,9 @@ td.topWinners.yellow_lihgt {
 TR.topWinnerHead {
     background-color: white;
 }
+.ui-dialog .ui-widget-content, .dlg-widget-content {
+  COLOR: #70747e!important; 
+}
+.yellow_lihgt {
+   COLOR: #70747e!important;  
+}
