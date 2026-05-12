@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кто хочет стать миллионером? - Конституция РФ</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --correct: #22c55e;
+            --incorrect: #ef4444;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --gold: #f59e0b;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            --radius: 12px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            line-height: 1.5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a, #0f172a);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h1 { font-size: 1.5rem; margin-bottom: 5px; }
+        .subtitle { color: var(--text-muted); font-size: 0.9rem; }
+
+        main { padding: 24px; }
+
+        .screen { display: none; animation: fadeIn 0.4s ease; }
+        .screen.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .progress-bar {
+            display: flex; justify-content: space-between; margin-bottom: 20px; gap: 4px;
+        }
+        .step {
+            flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden;
+        }
+        .step.filled { background: var(--gold); }
+        .step.active { background: var(--primary); }
+
+        .question-box {
+            background: #273548;
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+            font-size: 1.1rem;
+            min-height: 80px;
+        }
+
+        .options { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        @media (min-width: 600px) { .options { grid-template-columns: 1fr 1fr; } }
+
+        .btn {
+            padding: 14px 20px;
+            background: #334155;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+            text-align: left;
+        }
+        .btn:hover:not(:disabled) { background: #475569; transform: translateY(-2px); }
+        .btn:disabled { cursor: default; opacity: 0.7; }
+        
+        .btn.correct { background: var(--correct); border-color: var(--correct); color: #000; }
+        .btn.incorrect { background: var(--incorrect); border-color: var(--incorrect); }
+        .btn.selected { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+
+        .explanation {
+            margin-top: 20px;
+            padding: 16px;
+            background: #1e293b;
+            border-radius: var(--radius);
+            border: 1px dashed var(--primary);
+            display: none;
+        }
+        .explanation.visible { display: block; animation: fadeIn 0.3s; }
+        .explanation h3 { color: var(--gold); margin-bottom: 8px; font-size: 1rem; }
+        .explanation p { color: var(--text-muted); font-size: 0.95rem; }
+
+        .actions { margin-top: 24px; display: flex; justify-content: flex-end; gap: 12px; }
+        .btn-primary {
+            background: var(--primary); border: none; padding: 12px 24px; font-weight: 600;
+        }
+        .btn-primary:hover { background: var(--primary-hover); }
+
+        .result-card {
+            text-align: center; padding: 30px 20px;
+        }
+        .result-card h2 { font-size: 2rem; margin-bottom: 10px; color: var(--gold); }
+        .result-card p { color: var(--text-muted); margin-bottom: 24px; }
+        .score-big { font-size: 3rem; font-weight: bold; color: var(--primary); margin: 10px 0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🎓 Кто хочет стать миллионером?</h1>
+        <p class="subtitle">Тема: Основы конституционного строя РФ (Глава 1)</p>
+    </header>
+
+    <main>
+        <!-- Экран старта -->
+        <div id="start-screen" class="screen active">
+            <div style="text-align: center; padding: 20px 0;">
+                <p style="margin-bottom: 20px; color: var(--text-muted);">
+                    Вам предстоит ответить на <strong>10 вопросов</strong> по Конституции РФ. 
+                    Выберите один правильный вариант из четырёх.
+                </p>
+                <button id="start-btn" class="btn btn-primary" style="width: 100%;">Начать игру</button>
+            </div>
+        </div>
+
+        <!-- Экран игры -->
+        <div id="game-screen" class="screen">
+            <div class="progress-bar" id="progress"></div>
+            <div class="question-box" id="question-text"></div>
+            <div class="options" id="options-container"></div>
+            <div class="explanation" id="explanation-box">
+                <h3>📖 Пояснение:</h3>
+                <p id="explanation-text"></p>
+                <div class="actions">
+                    <button id="next-btn" class="btn btn-primary">Далее →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Экран завершения -->
+        <div id="end-screen" class="screen">
+            <div class="result-card">
+                <h2>Игра завершена!</h2>
+                <div class="score-big"><span id="final-score">0</span>/10</div>
+                <p id="result-message"></p>
+                <button id="restart-btn" class="btn btn-primary" style="width: 100%;">Сыграть ещё раз</button>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    'use strict';
+
+    // 🔹 DATA LAYER: Чистые данные вопросов на основе предоставленного текста
+    const QUESTIONS = [
+        {
+            q: "Согласно статье 1, какая форма правления установлена в Российской Федерации?",
+            options: ["Монархическая", "Парламентская", "Республиканская", "Президентская"],
+            correct: 2,
+            explanation: "Статья 1 ч. 1: «Российская Федерация — Россия есть демократическое федеративное правовое государство с республиканской формой правления»."
+        },
+        {
+            q: "Что является высшей ценностью согласно статье 2 Конституции РФ?",
+            options: ["Государственная собственность", "Территориальная целостность", "Человек, его права и свободы", "Национальная безопасность"],
+            correct: 2,
+            explanation: "Статья 2 ч. 1: «Человек, его права и свободы являются высшей ценностью. Признание, соблюдение и защита прав и свобод человека и гражданина — обязанность государства»."
+        },
+        {
+            q: "Кто является носителем суверенитета и единственным источником власти в РФ (статья 3)?",
+            options: ["Президент РФ", "Федеральное Собрание", "Многонациональный народ", "Правительство РФ"],
+            correct: 2,
+            explanation: "Статья 3 ч. 1: «Носителем суверенитета и единственным источником власти в Российской Федерации является ее многонациональный народ»."
+        },
+        {
+            q: "Какие нормативные акты имеют верховенство на всей территории РФ согласно статье 4?",
+            options: ["Только указы Президента", "Конституция РФ и федеральные законы", "Акты органов местного самоуправления", "Международные конвенции"],
+            correct: 1,
+            explanation: "Статья 4 ч. 2: «Конституция Российской Федерации и федеральные законы имеют верховенство на всей территории Российской Федерации»."
+        },
+        {
+            q: "Как соотносятся субъекты РФ во взаимоотношениях с федеральными органами власти (статья 5)?",
+            options: ["Зависят от экономического потенциала", "Имеют разный юридический статус", "Равноправны между собой", "Подчиняются напрямую Правительству"],
+            correct: 2,
+            explanation: "Статья 5 ч. 4: «Во взаимоотношениях с федеральными органами государственной власти все субъекты Российской Федерации между собой равноправны»."
+        },
+        {
+            q: "Какое государство обеспечивает создание условий для достойной жизни и свободного развития человека (статья 7)?",
+            options: ["Правовое", "Федеративное", "Социальное", "Светское"],
+            correct: 2,
+            explanation: "Статья 7 ч. 1: «Российская Федерация — социальное государство, политика которого направлена на создание условий, обеспечивающих достойную жизнь и свободное развитие человека»."
+        },
+        {
+            q: "Какие формы собственности признаются и защищаются равным образом согласно статье 8?",
+            options: ["Только государственная", "Только частная", "Частная, государственная, муниципальная и иные", "Муниципальная и коллективная"],
+            correct: 2,
+            explanation: "Статья 8 ч. 2: «В Российской Федерации признаются и защищаются равным образом частная, государственная, муниципальная и иные формы собственности»."
+        },
+        {
+            q: "На основе какого принципа осуществляется государственная власть в РФ (статья 10)?",
+            options: ["Единоначалия", "Разделения на законодательную, исполнительную и судебную", "Иерархии власти", "Народного представительства"],
+            correct: 1,
+            explanation: "Статья 10: «Государственная власть в Российской Федерации осуществляется на основе разделения на законодательную, исполнительную и судебную. Органы законодательной, исполнительной и судебной власти самостоятельны»."
+        },
+        {
+            q: "Входят ли органы местного самоуправления в систему органов государственной власти (статья 12)?",
+            options: ["Да, входят", "Нет, не входят", "Входят частично", "Только в городах федерального значения"],
+            correct: 1,
+            explanation: "Статья 12: «В Российской Федерации признается и гарантируется местное самоуправление. ... Органы местного самоуправления не входят в систему органов государственной власти»."
+        },
+        {
+            q: "Какое государство Российская Федерация согласно статье 14?",
+            options: ["Теократическое", "Конфессиональное", "Светское", "Атеистическое"],
+            correct: 2,
+            explanation: "Статья 14 ч. 1: «Российская Федерация — светское государство. Никакая религия не может устанавливаться в качестве государственной или обязательной»."
+        }
+    ];
+
+    // 🔹 STATE LAYER: Управление состоянием игры
+    const State = {
+        currentIndex: 0,
+        score: 0,
+        isLocked: false
+    };
+
+    // 🔹 UI REFERENCES (кэширование DOM)
+    const UI = {
+        startScreen: document.getElementById('start-screen'),
+        gameScreen: document.getElementById('game-screen'),
+        endScreen: document.getElementById('end-screen'),
+        questionText: document.getElementById('question-text'),
+        optionsContainer: document.getElementById('options-container'),
+        explanationBox: document.getElementById('explanation-box'),
+        explanationText: document.getElementById('explanation-text'),
+        nextBtn: document.getElementById('next-btn'),
+        startBtn: document.getElementById('start-btn'),
+        restartBtn: document.getElementById('restart-btn'),
+        progressBar: document.getElementById('progress'),
+        finalScore: document.getElementById('final-score'),
+        resultMessage: document.getElementById('result-message')
+    };
+
+    // 🔹 LOGIC LAYER
+    function initGame() {
+        State.currentIndex = 0;
+        State.score = 0;
+        State.isLocked = false;
+        showScreen('game');
+        renderProgressBar();
+        renderQuestion();
+    }
+
+    function showScreen(screenName) {
+        [UI.startScreen, UI.gameScreen, UI.endScreen].forEach(s => s.classList.remove('active'));
+        UI[screenName + 'Screen'].classList.add('active');
+    }
+
+    function renderProgressBar() {
+        UI.progressBar.innerHTML = '';
+        QUESTIONS.forEach((_, i) => {
+            const step = document.createElement('div');
+            step.className = 'step';
+            if (i < State.currentIndex) step.classList.add('filled');
+            if (i === State.currentIndex) step.classList.add('active');
+            UI.progressBar.appendChild(step);
+        });
+    }
+
+    function renderQuestion() {
+        const q = QUESTIONS[State.currentIndex];
+        UI.questionText.textContent = `Вопрос ${State.currentIndex + 1}/${QUESTIONS.length}: ${q.q}`;
+        UI.optionsContainer.innerHTML = '';
+        UI.explanationBox.classList.remove('visible');
+        State.isLocked = false;
+
+        q.options.forEach((opt, idx) => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.textContent = `${String.fromCharCode(65 + idx)}) ${opt}`;
+            btn.dataset.index = idx;
+            btn.addEventListener('click', () => handleAnswer(idx, btn));
+            UI.optionsContainer.appendChild(btn);
+        });
+    }
+
+    function handleAnswer(selectedIndex, btnElement) {
+        if (State.isLocked) return;
+        State.isLocked = true;
+
+        const q = QUESTIONS[State.currentIndex];
+        const isCorrect = selectedIndex === q.correct;
+        const buttons = UI.optionsContainer.querySelectorAll('.btn');
+
+        // Визуальная фиксация состояния
+        buttons.forEach(b => b.disabled = true);
+        btnElement.classList.add(isCorrect ? 'correct' : 'incorrect');
+        if (!isCorrect) buttons[q.correct].classList.add('correct');
+
+        if (isCorrect) State.score++;
+
+        // Показ пояснения
+        UI.explanationText.textContent = q.explanation;
+        UI.explanationBox.classList.add('visible');
+        UI.nextBtn.textContent = State.currentIndex === QUESTIONS.length - 1 ? 'Завершить игру' : 'Далее →';
+    }
+
+    function nextQuestion() {
+        State.currentIndex++;
+        if (State.currentIndex < QUESTIONS.length) {
+            renderProgressBar();
+            renderQuestion();
+        } else {
+            finishGame();
+        }
+    }
+
+    function finishGame() {
+        UI.finalScore.textContent = State.score;
+        const msg = State.score === 10 ? '🏆 Идеально! Вы эксперт Конституционного права.' :
+                    State.score >= 7 ? '✅ Отличный результат! Вы хорошо знаете основы.' :
+                    State.score >= 4 ? '📚 Неплохо, но есть над чем поработать.' : '💡 Рекомендуем перечитать Главу 1 Конституции РФ.';
+        UI.resultMessage.textContent = msg;
+        showScreen('end');
+    }
+
+    // 🔹 EVENT LISTENERS (Делегирование и прямая привязка)
+    UI.startBtn.addEventListener('click', initGame);
+    UI.nextBtn.addEventListener('click', nextQuestion);
+    UI.restartBtn.addEventListener('click', initGame);
+
+    // Инициализация при загрузке (готовность DOM обеспечена размещением скрипта в конце)
+    renderProgressBar();
+</script>
+
+</body>
+</html>

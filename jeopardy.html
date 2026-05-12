@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Своя игра: Основы конституционного строя РФ</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #0a1f4d, #1a3a8f);
+    color: #fff;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 2.2em;
+    text-shadow: 2px 2px 6px #000;
+    color: #ffd700;
+  }
+  .score {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #ffd700;
+  }
+  .reset-btn {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 8px 20px;
+    background: #ffd700;
+    color: #0a1f4d;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  .reset-btn:hover { background: #ffea70; }
+  .board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .category {
+    background: #08153a;
+    color: #ffd700;
+    text-align: center;
+    padding: 18px 8px;
+    font-weight: bold;
+    font-size: 1em;
+    border: 2px solid #ffd700;
+    border-radius: 6px;
+    text-transform: uppercase;
+  }
+  .cell {
+    background: #1a3a8f;
+    border: 2px solid #ffd700;
+    color: #ffd700;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    padding: 30px 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.2s;
+    text-shadow: 2px 2px 4px #000;
+  }
+  .cell:hover:not(.done) {
+    background: #2d5cc2;
+    transform: scale(1.03);
+  }
+  .cell.done {
+    background: #0a1f4d;
+    color: #555;
+    cursor: default;
+    border-color: #444;
+    text-shadow: none;
+  }
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    padding: 20px;
+  }
+  .modal.active { display: flex; }
+  .modal-content {
+    background: linear-gradient(135deg, #1a3a8f, #0a1f4d);
+    border: 3px solid #ffd700;
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(255,215,0,0.5);
+  }
+  .modal-points {
+    color: #ffd700;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+  }
+  .modal-question {
+    font-size: 1.4em;
+    margin-bottom: 25px;
+    line-height: 1.5;
+  }
+  .modal-answer {
+    font-size: 1.2em;
+    color: #90ee90;
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    display: none;
+  }
+  .modal-answer.show { display: block; }
+  .btn-group { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .btn-show { background: #ffd700; color: #0a1f4d; }
+  .btn-correct { background: #28a745; color: #fff; }
+  .btn-wrong { background: #dc3545; color: #fff; }
+  .btn-close { background: #6c757d; color: #fff; }
+  .btn:hover { opacity: 0.85; }
+  @media (max-width: 700px) {
+    .category { font-size: 0.7em; padding: 10px 4px; }
+    .cell { font-size: 1.2em; padding: 15px 5px; }
+    h1 { font-size: 1.3em; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Своя игра: Основы конституционного строя РФ</h1>
+<div class="score">Счёт: <span id="score">0</span></div>
+<button class="reset-btn" onclick="resetGame()">Новая игра</button>
+
+<div class="board" id="board"></div>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <div class="modal-points" id="modalPoints"></div>
+    <div class="modal-question" id="modalQuestion"></div>
+    <div class="modal-answer" id="modalAnswer"></div>
+    <div class="btn-group">
+      <button class="btn btn-show" id="showAnswerBtn" onclick="showAnswer()">Показать ответ</button>
+      <button class="btn btn-correct" onclick="answer(true)">Верно (+)</button>
+      <button class="btn btn-wrong" onclick="answer(false)">Неверно (−)</button>
+      <button class="btn btn-close" onclick="closeModal()">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const data = {
+  "Государство и власть": [
+    { q: "Какими четырьмя характеристиками определяется Российская Федерация согласно статье 1?", a: "Демократическое, федеративное, правовое государство с республиканской формой правления." },
+    { q: "Кто является носителем суверенитета и единственным источником власти в РФ?", a: "Её многонациональный народ." },
+    { q: "Что является высшим непосредственным выражением власти народа?", a: "Референдум и свободные выборы." },
+    { q: "На какие три ветви разделяется государственная власть в РФ?", a: "Законодательную, исполнительную и судебную." },
+    { q: "Перечислите органы, осуществляющие государственную власть в РФ согласно ст. 11.", a: "Президент РФ, Федеральное Собрание (Совет Федерации и Государственная Дума), Правительство РФ, суды РФ." }
+  ],
+  "Права и свободы": [
+    { q: "Что согласно статье 2 является высшей ценностью?", a: "Человек, его права и свободы." },
+    { q: "Чьей обязанностью является признание, соблюдение и защита прав и свобод человека?", a: "Государства." },
+    { q: "Может ли гражданин РФ быть лишён своего гражданства?", a: "Нет, гражданин РФ не может быть лишён гражданства или права изменить его." },
+    { q: "Является ли гражданство РФ равным независимо от оснований его приобретения?", a: "Да, гражданство РФ является единым и равным независимо от оснований приобретения." },
+    { q: "На что направлена политика социального государства согласно статье 7?", a: "На создание условий, обеспечивающих достойную жизнь и свободное развитие человека." }
+  ],
+  "Федеративное устройство": [
+    { q: "Из каких видов субъектов состоит Российская Федерация?", a: "Республики, края, области, города федерального значения, автономная область, автономные округа." },
+    { q: "Какой основной закон имеет республика в составе РФ, а какой — край или область?", a: "Республика имеет конституцию, а край, область, город федерального значения, автономная область и автономный округ — устав." },
+    { q: "Равноправны ли субъекты РФ во взаимоотношениях с федеральными органами власти?", a: "Да, все субъекты РФ между собой равноправны." },
+    { q: "На что распространяется суверенитет Российской Федерации?", a: "На всю её территорию." },
+    { q: "Назовите три ключевых принципа, на которых основано федеративное устройство РФ (ст. 5).", a: "Государственная целостность, единство системы государственной власти, разграничение предметов ведения и полномочий, равноправие и самоопределение народов." }
+  ],
+  "Идеология и религия": [
+    { q: "Может ли в России какая-либо идеология устанавливаться в качестве государственной?", a: "Нет, никакая идеология не может устанавливаться в качестве государственной или обязательной." },
+    { q: "Каким государством с точки зрения религии является Россия?", a: "Светским государством." },
+    { q: "Какие виды многообразия признаются в РФ согласно статье 13?", a: "Идеологическое и политическое многообразие, многопартийность." },
+    { q: "Какие общественные объединения запрещены в РФ?", a: "Те, чьи цели или действия направлены на насильственное изменение основ конституционного строя, нарушение целостности РФ, подрыв безопасности государства, создание вооружённых формирований, разжигание социальной, расовой, национальной и религиозной розни." },
+    { q: "Каковы отношения между религиозными объединениями и государством в РФ?", a: "Религиозные объединения отделены от государства и равны перед законом." }
+  ],
+  "Конституция и право": [
+    { q: "Какую юридическую силу имеет Конституция РФ?", a: "Высшую юридическую силу, прямое действие, применяется на всей территории РФ." },
+    { q: "Что происходит с неопубликованными законами?", a: "Они не применяются." },
+    { q: "Являются ли общепризнанные принципы и нормы международного права частью правовой системы РФ?", a: "Да, они являются составной частью её правовой системы." },
+    { q: "Кто обязан соблюдать Конституцию РФ и законы?", a: "Органы государственной власти, органы местного самоуправления, должностные лица, граждане и их объединения." },
+    { q: "Могут ли быть изменены положения Главы 1 Конституции (основы конституционного строя) в обычном порядке?", a: "Нет, они не могут быть изменены иначе как в порядке, установленном Конституцией РФ (требуется созыв Конституционного Собрания)." }
+  ]
+};
+
+const points = [100, 200, 300, 400, 500];
+let score = 0;
+let currentCell = null;
+let answeredCells = new Set();
+
+function buildBoard() {
+  const board = document.getElementById('board');
+  board.innerHTML = '';
+  const categories = Object.keys(data);
+  
+  categories.forEach(cat => {
+    const div = document.createElement('div');
+    div.className = 'category';
+    div.textContent = cat;
+    board.appendChild(div);
+  });
+  
+  for (let i = 0; i < 5; i++) {
+    categories.forEach((cat, catIdx) => {
+      const cell = document.createElement('div');
+      const id = `${catIdx}-${i}`;
+      cell.className = 'cell';
+      cell.textContent = points[i];
+      cell.dataset.id = id;
+      if (answeredCells.has(id)) cell.classList.add('done');
+      cell.onclick = () => openQuestion(cat, i, cell);
+      board.appendChild(cell);
+    });
+  }
+}
+
+function openQuestion(cat, idx, cell) {
+  if (cell.classList.contains('done')) return;
+  currentCell = { cat, idx, cell };
+  document.getElementById('modalPoints').textContent = `${cat} — ${points[idx]} очков`;
+  document.getElementById('modalQuestion').textContent = data[cat][idx].q;
+  document.getElementById('modalAnswer').textContent = data[cat][idx].a;
+  document.getElementById('modalAnswer').classList.remove('show');
+  document.getElementById('showAnswerBtn').style.display = 'inline-block';
+  document.getElementById('modal').classList.add('active');
+}
+
+function showAnswer() {
+  document.getElementById('modalAnswer').classList.add('show');
+  document.getElementById('showAnswerBtn').style.display = 'none';
+}
+
+function answer(correct) {
+  if (!currentCell) return;
+  const pts = points[currentCell.idx];
+  score += correct ? pts : -pts;
+  document.getElementById('score').textContent = score;
+  currentCell.cell.classList.add('done');
+  answeredCells.add(currentCell.cell.dataset.id);
+  closeModal();
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('active');
+  currentCell = null;
+}
+
+function resetGame() {
+  if (!confirm('Начать новую игру? Текущий счёт будет сброшен.')) return;
+  score = 0;
+  answeredCells.clear();
+  document.getElementById('score').textContent = score;
+  buildBoard();
+}
+
+buildBoard();
+</script>
+</body>
+</html>

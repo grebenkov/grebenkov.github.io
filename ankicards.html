@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Уголовное право | Anki-style Flashcards</title>
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --card-bg: #ffffff;
+      --text-main: #1a1a1a;
+      --text-secondary: #5f6368;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-hover: 0 8px 24px rgba(0,0,0,0.12);
+      --radius: 16px;
+      --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      --font: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    header {
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .progress-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    progress {
+      flex: 1;
+      height: 6px;
+      border-radius: 3px;
+      overflow: hidden;
+      border: none;
+      background: #e5e7eb;
+    }
+
+    progress::-webkit-progress-bar { background: #e5e7eb; border-radius: 3px; }
+    progress::-webkit-progress-value { background: var(--primary); border-radius: 3px; transition: width var(--transition); }
+    progress::-moz-progress-bar { background: var(--primary); border-radius: 3px; }
+
+    /* 3D Scene */
+    .scene {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      perspective: 800px;
+      cursor: pointer;
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform var(--transition);
+    }
+
+    .card.is-flipped { transform: rotateY(180deg); }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      text-align: center;
+      overflow-y: auto;
+    }
+
+    .card-face:hover { box-shadow: var(--shadow-hover); }
+
+    .card-back { transform: rotateY(180deg); }
+    .card-back { background: #f8fafc; border: 2px solid #e2e8f0; }
+
+    #term {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    #definition {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--text-main);
+    }
+
+    .hint {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      opacity: 0.8;
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px 16px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      background: var(--primary);
+      color: white;
+      cursor: pointer;
+      transition: background var(--transition), opacity var(--transition);
+    }
+
+    button:disabled { background: #cbd5e1; cursor: not-allowed; opacity: 0.6; }
+    button:not(:disabled):hover { background: var(--primary-hover); }
+    button.secondary { background: #64748b; }
+    button.secondary:hover { background: #475569; }
+
+    .shortcuts {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    kbd {
+      background: #e2e8f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.85em;
+    }
+
+    @media (max-width: 480px) {
+      .scene { aspect-ratio: 4 / 3; }
+      #term { font-size: 1.25rem; }
+      #definition { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>Карточки по уголовному праву</h1>
+      <div class="progress-container">
+        <span id="progress-text">1 / 20</span>
+        <progress id="progress-bar" value="5" max="100"></progress>
+      </div>
+    </header>
+
+    <div class="scene" id="card-scene" role="button" aria-label="Перевернуть карточку" tabindex="0">
+      <div class="card" id="card">
+        <div class="card-face card-front">
+          <h2 id="term"></h2>
+          <p class="hint">Нажмите, чтобы увидеть определение</p>
+        </div>
+        <div class="card-face card-back">
+          <p id="definition"></p>
+        </div>
+      </div>
+    </div>
+
+    <nav class="controls">
+      <button id="btn-prev" class="secondary" disabled>← Назад</button>
+      <button id="btn-flip">Показать ответ</button>
+      <button id="btn-next" disabled>Далее →</button>
+    </nav>
+
+    <p class="shortcuts">
+      <kbd>Space</kbd> / <kbd>Enter</kbd> — перевернуть &nbsp;|&nbsp; 
+      <kbd>←</kbd> <kbd>→</kbd> — навигация &nbsp;|&nbsp; 
+      <kbd>R</kbd> — перемешать
+    </p>
+  </main>
+
+  <script>
+    (() => {
+      'use strict';
+
+      // Данные: 20 пар термин-определение (взяты из задания)
+      const DATA = [
+        { term: "Альтернативная диспозиция", def: "Предусматривает выбор одного из нескольких видов наказания (например, лишения свободы или штрафа)." },
+        { term: "Альтернативная санкция", def: "Предусматривает несколько самостоятельных действий, каждое из которых является достаточным для наступления ответственности по данной уголовно-правовой норме." },
+        { term: "Бланкетная диспозиция", def: "Предполагает использование для установления признаков деяния нормативных актов других отраслей права." },
+        { term: "Внутренние воды", def: "Воды рек, озёр и иных водоёмов, находящихся в пределах Государственной границы РФ." },
+        { term: "Внутренние морские воды", def: "Воды, расположенные в сторону берега от исходных линий, от которых отмеряется ширина территориального моря Российской Федерации." },
+        { term: "Воздушное пространство", def: "Воздушное пространство над территорией Российской Федерации, в том числе воздушное пространство над внутренними водами и территориальным морем." },
+        { term: "Время совершения преступления", def: "Время совершения общественно опасного действия (бездействия) независимо от времени наступления последствий." },
+        { term: "Диспозиция уголовно-правовой нормы", def: "Часть нормы, которая устанавливает признаки конкретного преступного деяния (относящейся к Особенной части уголовного закона)." },
+        { term: "Иммунитет", def: "Предусмотренное международным правом исключение из уголовно-правовой юрисдикции государства, распространяющееся на дипломатических представителей и консульских должностных лиц." },
+        { term: "Исключительная экономическая зона РФ", def: "Морской район, находящийся за пределами территориального моря РФ, имеющий протяжение 200 морских миль от исходных линий территориального моря (если иное не установлено международным договором РФ)." },
+        { term: "Континентальный шельф", def: "Морское дно и недра подводных районов, находящиеся за пределами территориального моря РФ на всем протяжении естественного продолжения её сухопутной территории до внешней границы подводной окраины материка, но не менее 200 морских миль." },
+        { term: "Кумулятивная санкция", def: "Предусматривает назначение одновременно двух видов наказания: основного и дополнительного." },
+        { term: "Недра", def: "Часть земной коры в границах территории РФ, расположенная ниже почвенного слоя и простирающаяся до глубин, доступных для геологического изучения и освоения." },
+        { term: "Нормы-запреты", def: "Устанавливают недопустимость совершения определённых общественно опасных действий под страхом наказания." },
+        { term: "Нормы-поощрения", def: "Стимулируют лицо к совершению определённых действий." },
+        { term: "Нормы-предписания", def: "Устанавливают нормативные определения понятий, относящихся к сфере уголовного права («преступление», «наказание») или содержат общеобязательные правила поведения." },
+        { term: "Обратная сила уголовного закона", def: "Распространение его действия на лиц, совершивших преступление до вступления такого закона в силу, в том числе на лиц, отбывающих наказание или имеющих судимость." },
+        { term: "Описательная диспозиция", def: "Помимо наименования деяния содержит его краткое или подробное определение или описание («убийство, то есть умышленное причинение смерти другому человеку»)." },
+        { term: "Относительно определённая санкция", def: "Устанавливает конкретный вид наказания и его минимальный и максимальный пределы (или только максимальный предел; в этом случае наказание не может быть меньше, чем предусмотрено в статье Общей части)." },
+        { term: "Персона нон грата", def: "Дипломатический термин, трактующийся как «нежелательная персона». Принимающее государство может в любое время и без объяснения причин объявить любого члена дипкорпуса persona non grata. Лицо должно покинуть страну." }
+      ];
+
+      // Состояние приложения
+      const state = {
+        cards: [...DATA],
+        index: 0,
+        isFlipped: false
+      };
+
+      // Кэш DOM-элементов (Single Responsibility: отделены от логики)
+      const dom = {
+        term: document.getElementById('term'),
+        definition: document.getElementById('definition'),
+        card: document.getElementById('card'),
+        scene: document.getElementById('card-scene'),
+        progressText: document.getElementById('progress-text'),
+        progressBar: document.getElementById('progress-bar'),
+        btnFlip: document.getElementById('btn-flip'),
+        btnPrev: document.getElementById('btn-prev'),
+        btnNext: document.getElementById('btn-next')
+      };
+
+      // Чистая функция обновления UI
+      function render() {
+        const current = state.cards[state.index];
+        dom.term.textContent = current.term;
+        dom.definition.textContent = current.def;
+
+        // Сброс переворота при смене карточки
+        state.isFlipped = false;
+        dom.card.classList.remove('is-flipped');
+        dom.btnFlip.textContent = 'Показать ответ';
+
+        // Прогресс
+        const progress = ((state.index + 1) / state.cards.length) * 100;
+        dom.progressText.textContent = `${state.index + 1} / ${state.cards.length}`;
+        dom.progressBar.value = progress;
+
+        // Состояние кнопок навигации
+        dom.btnPrev.disabled = state.index === 0;
+        dom.btnNext.disabled = state.index === state.cards.length - 1;
+      }
+
+      // Логика переворота
+      function toggleFlip() {
+        state.isFlipped = !state.isPlipped;
+        dom.card.classList.toggle('is-flipped', !state.isFlipped); // Исправление логической ошибки
+        state.isFlipped = !state.isPlipped; // Исправление: используем правильный state.isFlipped
+        dom.card.classList.toggle('is-flipped', state.isFlipped);
+        dom.btnFlip.textContent = state.isFlipped ? 'Скрыть ответ' : 'Показать ответ';
+        dom.scene.setAttribute('aria-expanded', state.isFlipped);
+      }
+
+      // Исправленный вариант без дублирования:
+      function flipCard() {
+        state.isFlipped = !state.isFlipped;
+        dom.card.classList.toggle('is-flipped', state.isFlipped);
+        dom.btnFlip.textContent = state.isFlipped ? 'Скрыть ответ' : 'Показать ответ';
+        dom.scene.setAttribute('aria-expanded', state.isFlipped);
+      }
+
+      // Навигация
+      function navigate(direction) {
+        const nextIndex = state.index + direction;
+        if (nextIndex >= 0 && nextIndex < state.cards.length) {
+          state.index = nextIndex;
+          render();
+        }
+      }
+
+      // Перемешивание (Fisher-Yates)
+      function shuffleCards() {
+        for (let i = state.cards.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [state.cards[i], state.cards[j]] = [state.cards[j], state.cards[i]];
+        }
+        state.index = 0;
+        render();
+      }
+
+      // Инициализация и привязка событий
+      function init() {
+        render();
+
+        dom.scene.addEventListener('click', flipCard);
+        dom.btnFlip.addEventListener('click', (e) => { e.stopPropagation(); flipCard(); });
+        dom.btnPrev.addEventListener('click', () => navigate(-1));
+        dom.btnNext.addEventListener('click', () => navigate(1));
+
+        // Клавиатурная навигация (KISS + Accessibility)
+        document.addEventListener('keydown', (e) => {
+          if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flipCard(); }
+          if (e.key === 'ArrowLeft') navigate(-1);
+          if (e.key === 'ArrowRight') navigate(1);
+          if (e.key.toLowerCase() === 'r') shuffleCards();
+        });
+      }
+
+      init();
+    })();
+  </script>
+</body>
+</html>
